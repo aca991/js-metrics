@@ -18,7 +18,9 @@ export class ChartComponent implements OnInit {
     };
   }
 
-
+onDateClicked(dateRange: Object): void {
+  console.log('emitovano', dateRange);
+}
 
   ngOnInit() {
   }
