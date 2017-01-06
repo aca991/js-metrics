@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import * as highcharts from 'highcharts';
 
 @Component({
   selector: 'app-chart',
@@ -6,23 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chart.component.css']
 })
 
-export class ChartComponent implements OnInit {
-  options: Object;
-
-  constructor() {
-    this.options = {
-      title: { text: 'simple chart' },
-      series: [{
-        data: [29.9, 71.5, 106.4, 129.2],
-      }]
-    };
-  }
-
-onDateClicked(dateRange: Object): void {
-  console.log('emitovano', dateRange);
-}
-
-  ngOnInit() {
-  }
-
+export class ChartComponent {
+  @Input() options: highcharts.Options;
 }

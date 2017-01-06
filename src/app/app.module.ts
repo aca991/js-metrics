@@ -3,24 +3,27 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AppComponent } from './app.component';
+import { MaterialModule } from '@angular/material';
 import { ChartModule } from 'angular2-highcharts';
+import 'hammerjs';
+
+import { AppComponent } from './app.component';
 import { ChartComponent } from './chart/chart.component';
-import { DatePickerModule } from 'ng2-datepicker';
-import { DatepickerComponent } from './datepicker/datepicker.component';
+import { ChartOptionsComponent } from './chart-options/chart-options.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ChartComponent,
-    DatepickerComponent
+    ChartOptionsComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     ChartModule,
-    DatePickerModule
+    MaterialModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

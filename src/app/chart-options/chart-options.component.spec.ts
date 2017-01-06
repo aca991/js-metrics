@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { DatepickerComponent } from './datepicker.component';
+import { ChartOptionsComponent } from './chart-options.component';
 
-describe('DatepickerComponent', () => {
-  let component: DatepickerComponent;
-  let fixture: ComponentFixture<DatepickerComponent>;
+describe('ChartOptionsComponent', () => {
+  let component: ChartOptionsComponent;
+  let fixture: ComponentFixture<ChartOptionsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DatepickerComponent ]
+      declarations: [ ChartOptionsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DatepickerComponent);
+    fixture = TestBed.createComponent(ChartOptionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
