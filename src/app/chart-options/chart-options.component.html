@@ -6,8 +6,8 @@
   <input md-input type="date" [(ngModel)]="endDate">
 </md-input-container>
 
-<md-checkbox>High Temps</md-checkbox>
-<md-checkbox>Low Temps</md-checkbox>
+<md-checkbox [(ngModel)]="highTemps">High Temps</md-checkbox>
+<md-checkbox [(ngModel)]="lowTemps">Low Temps</md-checkbox>
 
-<button md-raised-button>Auto-Fit</button>
+<button md-raised-button (click)="autoFit()">Auto-Fit</button>
 

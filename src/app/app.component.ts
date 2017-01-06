@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 
+import { ChartOptionsService } from './chart-options/chart-options.service';
+
 @Component({
   selector: 'app-root',
+  providers: [ChartOptionsService],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -12,6 +15,9 @@ export class AppComponent {
 
     }]
   };
+
+  constructor(private _chartOptionsService: ChartOptionsService) {
+  }
 
   private updateChartOptions(): void {
     this.options = {
@@ -32,5 +38,18 @@ export class AppComponent {
     this.updateChartOptions();
   }
 
+  onHighTempsChange(isChecked: boolean) {
+    console.log('emitovano high');
+    this.updateChartOptions();
+  }
+
+  onLowTempsChange(isChecked: boolean) {
+    console.log('emitovano low');
+      this.updateChartOptions();
+  }
+
+  autoFitClicked() {
+    console.log('emitovano autofit');
+  }
 
 }

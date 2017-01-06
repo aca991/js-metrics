@@ -1,5 +1,7 @@
 <h1>
   <app-chart [options]="options"></app-chart>
-  <app-chart-options (beginDateChange)='onBeginDateChange($event)' (endDateChange)='onEndDateChange($event)'>
+  <app-chart-options (beginDateChange)='onBeginDateChange($event)' (endDateChange)='onEndDateChange($event)'
+  (highTempsChange)='onHighTempsChange($event)' (lowTempsChange)='onLowTempsChange($event)'
+  (autoFitClicked)='autoFitClicked()'>
   </app-chart-options>
 </h1>

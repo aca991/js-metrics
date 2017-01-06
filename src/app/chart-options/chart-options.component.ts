@@ -15,7 +15,7 @@ export class ChartOptionsComponent {
   @Output() endDateChange: EventEmitter<Date> = new EventEmitter<Date>();
   @Output() highTempsChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() lowTempsChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() autoFitChange: EventEmitter<void> = new EventEmitter<void>();
+  @Output() autoFitClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   set beginDate(date: Date) {
     this.beginDateChange.emit(date);
@@ -23,6 +23,18 @@ export class ChartOptionsComponent {
 
   set endDate(date: Date) {
     this.endDateChange.emit(date);
+  }
+
+  set highTemps(isChecked: boolean) {
+    this.highTempsChange.emit(isChecked);
+  }
+
+  set lowTemps(isChecked: boolean) {
+    this.lowTempsChange.emit(isChecked);
+  }
+
+  autoFit(): void {
+    this.autoFitClicked.emit();
   }
 
 }
