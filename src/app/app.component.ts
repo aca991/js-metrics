@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { ChartOptionsService } from './chart-options/chart-options.service';
+import { TempService } from './shared/temp.service';
 
 @Component({
   selector: 'app-root',
-  providers: [ChartOptionsService],
+  providers: [TempService],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -17,7 +17,7 @@ export class AppComponent {
   };
   data: Object;
 
-  constructor(private _chartOptionsService: ChartOptionsService) {
+  constructor(private _tempService: TempService) {
   }
 
   private updateChartOptions(): void {
@@ -31,7 +31,7 @@ export class AppComponent {
 
   onEndDateChange(endDate: Date): void {
     console.log('emitovano', endDate);
-    this._chartOptionsService.getData().subscribe(
+    this._tempService.getData().subscribe(
       data => this.data = data
     );
     this.updateChartOptions();

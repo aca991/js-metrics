@@ -7,7 +7,7 @@ import 'rxjs/add/operator/catch';
 
 
 @Injectable()
-export class ChartOptionsService {
+export class TempService {
 
     private _productUrl = 'assets/api/temp_data_high.json';
 

@@ -1,17 +1,18 @@
 import {
   Component,
   Output,
+  OnInit,
   EventEmitter,
 } from '@angular/core';
 
-import { IChartOptions } from './chart-options';
+import { IChartOptions } from 'app/shared/temp-options';
 
 @Component({
   selector: 'app-chart-options',
   templateUrl: './chart-options.component.html',
   styleUrls: ['./chart-options.component.css']
 })
-export class ChartOptionsComponent {
+export class ChartOptionsComponent implements OnInit {
   options: IChartOptions[];
 
   @Output() beginDateChange: EventEmitter<Date> = new EventEmitter<Date>();
@@ -38,6 +39,9 @@ export class ChartOptionsComponent {
 
   autoFit(): void {
     this.autoFitClicked.emit();
+  }
+
+  ngOnInit(): void {
   }
 
 }
