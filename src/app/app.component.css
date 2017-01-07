@@ -1,0 +1,11 @@
+app-chart {
+    display: inline-block;
+    width: 40%;
+    float: left;
+}
+
+app-chart-options {
+    display: inline-block;
+    width: 40%;
+    float: right;
+}

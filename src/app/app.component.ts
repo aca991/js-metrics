@@ -43,7 +43,7 @@ export class AppComponent {
   }
 
   onHighTempsChange(isChecked: boolean) {
-    console.log('emitovano high');
+    console.log('emitovano high', isChecked);
     this.updateChartOptions();
   }
 
