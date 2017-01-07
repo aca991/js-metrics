@@ -7,7 +7,7 @@ import 'rxjs/add/operator/catch';
 
 
 @Injectable()
-export class TempService {
+export class TemperatureService {
 
     private _productUrl = 'assets/api/temp_data_high.json';
 

@@ -7,6 +7,8 @@ import { MaterialModule } from '@angular/material';
 import { ChartModule } from 'angular2-highcharts';
 import 'hammerjs';
 
+import { TemperatureService } from './shared/temperature.service';
+
 import { AppComponent } from './app.component';
 import { ChartComponent } from './chart/chart.component';
 import { ChartOptionsComponent } from './chart-options/chart-options.component';
@@ -25,7 +27,9 @@ import { ChartOptionsComponent } from './chart-options/chart-options.component';
     ChartModule,
     MaterialModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    TemperatureService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

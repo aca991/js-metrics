@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { TempService } from './shared/temp.service';
+import { TemperatureService } from './shared/temperature.service';
+import { TemperatureOptions } from 'app/shared/temperature-options';
 
 @Component({
   selector: 'app-root',
-  providers: [TempService],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -17,7 +17,9 @@ export class AppComponent {
   };
   data: Object;
 
-  constructor(private _tempService: TempService) {
+  constructor(
+    private _tempService: TemperatureService,
+  ) {
   }
 
   private updateChartOptions(): void {
@@ -29,31 +31,12 @@ export class AppComponent {
     };
   }
 
-  onEndDateChange(endDate: Date): void {
-    console.log('emitovano', endDate);
-    this._tempService.getData().subscribe(
-      data => this.data = data
-    );
-    this.updateChartOptions();
-  }
-
-  onBeginDateChange(beginDate: Date): void {
-    console.log('emitovano', beginDate);
-    this.updateChartOptions();
-  }
-
-  onHighTempsChange(isChecked: boolean) {
-    console.log('emitovano high', isChecked);
-    this.updateChartOptions();
-  }
-
-  onLowTempsChange(isChecked: boolean) {
-    console.log('emitovano low');
-      this.updateChartOptions();
-  }
-
   autoFitClicked() {
     console.log('emitovano autofit');
+  }
+
+  onOptionsChange(options: TemperatureOptions): void {
+    console.log('emitovano options', options);
   }
 
 }

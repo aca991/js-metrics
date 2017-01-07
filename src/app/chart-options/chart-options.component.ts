@@ -1,40 +1,39 @@
 import {
   Component,
   Output,
-  OnInit,
+  OnInit, OnDestroy,
   EventEmitter,
+  ViewChild,
 } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
-import { IChartOptions } from 'app/shared/temp-options';
+import { Subscription } from 'rxjs/Subscription';
+
+import { TemperatureOptions } from 'app/shared/temperature-options';
 
 @Component({
   selector: 'app-chart-options',
   templateUrl: './chart-options.component.html',
   styleUrls: ['./chart-options.component.css']
 })
-export class ChartOptionsComponent implements OnInit {
-  options: IChartOptions[];
+export class ChartOptionsComponent implements OnInit, OnDestroy {
+  options: TemperatureOptions;
 
-  @Output() beginDateChange: EventEmitter<Date> = new EventEmitter<Date>();
-  @Output() endDateChange: EventEmitter<Date> = new EventEmitter<Date>();
-  @Output() highTempsChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() lowTempsChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @ViewChild('optionsForm') form: NgForm;
+  formChangeSubscription: Subscription;
+
+  @Output() optionsChange = new EventEmitter<TemperatureOptions>();
   @Output() autoFitClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  set beginDate(date: Date) {
-    this.beginDateChange.emit(date);
-  }
-
-  set endDate(date: Date) {
-    this.endDateChange.emit(date);
-  }
-
-  set highTemps(isChecked: boolean) {
-    this.highTempsChange.emit(isChecked);
-  }
-
-  set lowTemps(isChecked: boolean) {
-    this.lowTempsChange.emit(isChecked);
+  constructor() {
+    // let beginDate = new Date();
+    // beginDate.setDate(beginDate.getDate() - 7);
+    this.options = {
+      beginDate: '2017-01-01',
+      endDate: '2017-02-01',
+      highTemps: true,
+      lowTemps: true,
+    };
   }
 
   autoFit(): void {
@@ -42,6 +41,16 @@ export class ChartOptionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.formChangeSubscription =
+      this.form.control.valueChanges.subscribe(() => {
+        this.optionsChange.emit(this.options);
+        //TODO save previous options and compare them to current object.assign (nikako =)
+      });
   }
+
+  ngOnDestroy(): void {
+    this.formChangeSubscription.unsubscribe();
+  }
+  //TODO rename component to temperature options component
 
 }
