@@ -15,6 +15,7 @@ export class AppComponent {
 
     }]
   };
+  data: Object;
 
   constructor(private _chartOptionsService: ChartOptionsService) {
   }
@@ -30,6 +31,9 @@ export class AppComponent {
 
   onEndDateChange(endDate: Date): void {
     console.log('emitovano', endDate);
+    this._chartOptionsService.getData().subscribe(
+      data => this.data = data
+    );
     this.updateChartOptions();
   }
 

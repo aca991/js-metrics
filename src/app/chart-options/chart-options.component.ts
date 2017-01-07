@@ -4,12 +4,15 @@ import {
   EventEmitter,
 } from '@angular/core';
 
+import { IChartOptions } from './chart-options';
+
 @Component({
   selector: 'app-chart-options',
   templateUrl: './chart-options.component.html',
   styleUrls: ['./chart-options.component.css']
 })
 export class ChartOptionsComponent {
+  options: IChartOptions[];
 
   @Output() beginDateChange: EventEmitter<Date> = new EventEmitter<Date>();
   @Output() endDateChange: EventEmitter<Date> = new EventEmitter<Date>();

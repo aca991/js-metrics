@@ -9,19 +9,19 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class ChartOptionsService {
 
-    // private _productUrl = 'api/products/products.json';
+    private _productUrl = 'assets/api/temp_data_high.json';
 
-    // constructor(private _http: Http){}
+    constructor(private _http: Http){}
 
-    // getProducts(): Observable <IProduct[]> {
-    //     return this._http.get(this._productUrl)
-    //         .map((response: Response) => <IProduct[]> response.json())
-    //         .do(data => console.log('All: ' + JSON.stringify(data)))
-    //         .catch(this.handleError);
-    // }
+    getData(): Observable <Object> {
+        return this._http.get(this._productUrl)
+            .map((response: Response) => <Object> response.json())
+            .do(data => console.log('All: ' + JSON.stringify(data)))
+            .catch(this.handleError);
+    }
 
-    // private handleError(error: Response) {
-    //     console.error(error);
-    //     return Observable.throw(error.json().error || 'Server error');
-    // }
+    private handleError(error: Response) {
+        console.error(error);
+        return Observable.throw(error.json().error || 'Server error');
+    }
 }
