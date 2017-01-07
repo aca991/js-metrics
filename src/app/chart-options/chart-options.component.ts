@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
 
 import { Subscription } from 'rxjs/Subscription';
 
-import { TemperatureOptions } from 'app/shared/temperature-options';
+import { TemperatureOptions } from '../shared/model/temperature-options';
 
 @Component({
   selector: 'app-chart-options',

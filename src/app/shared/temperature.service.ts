@@ -1,22 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
+
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 
+import { environment } from '../../environments/environment';
+import { ApiResponse, HighTemperatureData, LowTemperatureData, SiteWeatherData, TemperatureOptions } from './model';
 
 @Injectable()
 export class TemperatureService {
 
-    private _productUrl = 'assets/api/temp_data_high.json';
 
     constructor(private _http: Http){}
 
-    getData(): Observable <Object> {
-        return this._http.get(this._productUrl)
-            .map((response: Response) => <Object> response.json())
-            .do(data => console.log('All: ' + JSON.stringify(data)))
+    getSiteWeatherData(): Observable <Object> {
+      //TODO return Observable<SiteWeatherData>
+        return this._http.get(environment.api.temperature.high)
+            .map((response: Response) => response.json() as ApiResponse<SiteWeatherData<HighTemperatureData>>)
+            .do(data => console.log('All: ' + JSON.stringify(data.result.weather)))
             .catch(this.handleError);
     }
 

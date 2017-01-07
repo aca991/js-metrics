@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { TemperatureService } from './shared/temperature.service';
-import { TemperatureOptions } from 'app/shared/temperature-options';
+import { TemperatureOptions } from './shared/model';
 
 @Component({
   selector: 'app-root',
