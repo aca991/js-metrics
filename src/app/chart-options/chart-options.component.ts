@@ -26,11 +26,22 @@ export class ChartOptionsComponent implements OnInit, OnDestroy {
   @Output() autoFitClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor() {
-    // let beginDate = new Date();
-    // beginDate.setDate(beginDate.getDate() - 7);
+    let beginDate = new Date();
+    let endDate = new Date();
+    let beginDateStr, endDateStr;
+
+    beginDate.setDate(beginDate.getDate() - 7);
+    let beginMonth = (beginDate.getMonth() + 1 < 10) ? '0' + (beginDate.getMonth() + 1) : (beginDate.getMonth() + 1);
+    let beginDay = (beginDate.getDate() < 10) ? '0' + beginDate.getDate() : beginDate.getDate();
+    beginDateStr = beginDate.getFullYear() + '-' + beginMonth + '-' + beginDay;
+
+    let endMonth = (endDate.getMonth() + 1 < 10) ? '0' + (endDate.getMonth() + 1) : (endDate.getMonth() + 1);
+    let endDay = (endDate.getDate() < 10) ? '0' + endDate.getDate() : endDate.getDate();
+    endDateStr = endDate.getFullYear() + '-' + endMonth + '-' + endDay;
+
     this.options = {
-      beginDate: '2017-01-01',
-      endDate: '2017-02-01',
+      beginDate: beginDateStr,
+      endDate: endDateStr,
       highTemps: true,
       lowTemps: true,
     };
@@ -44,13 +55,13 @@ export class ChartOptionsComponent implements OnInit, OnDestroy {
     this.formChangeSubscription =
       this.form.control.valueChanges.subscribe(() => {
         this.optionsChange.emit(this.options);
-        //TODO save previous options and compare them to current object.assign (nikako =)
+        // TODO save previous options and compare them to current object.assign (nikako =)
       });
   }
 
   ngOnDestroy(): void {
     this.formChangeSubscription.unsubscribe();
   }
-  //TODO rename component to temperature options component
+  // TODO rename component to temperature options component
 
 }

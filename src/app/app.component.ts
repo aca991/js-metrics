@@ -37,6 +37,7 @@ export class AppComponent {
 
   onOptionsChange(options: TemperatureOptions): void {
     console.log('emitovano options', options);
+    this._tempService.getSiteWeatherData().subscribe();
   }
 
 }
