@@ -1,3 +1,3 @@
 export interface ApiResponse<T> {
-  result: T;
+  result: T | null;
 }

@@ -1,21 +1,13 @@
-export interface HighSeries {
-    date: string;
-    high_temp: number;
-}
-
-export interface LowSeries {
-    date: string;
-    low_temp: number;
+export interface Data {
+  date: string;
+  temperature: number;
 }
 
 export interface TemperatureChartData {
-    high: {
-        name: string;
-        series: HighSeries[];
-    }
+  series: Series[];
+}
 
-    low: {
-        name: string;
-        series: LowSeries[];
-    }
+export interface Series {
+  name: string;
+  data: Data[];
 }

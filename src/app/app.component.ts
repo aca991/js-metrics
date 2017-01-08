@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { TemperatureService } from './shared/temperature.service';
-import { TemperatureOptions } from './shared/model';
+import { TemperatureOptions, TemperatureChartData } from './shared/model';
 
 @Component({
   selector: 'app-root',
@@ -9,26 +9,13 @@ import { TemperatureOptions } from './shared/model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  options: Highcharts.Options = {
-    title : { text : 'JS Metrics' },
-    series: [{
-
-    }]
+  chartData: TemperatureChartData = {
+    series: [],
   };
-  data: Object;
 
   constructor(
     private _tempService: TemperatureService,
   ) {
-  }
-
-  private updateChartOptions(): void {
-    this.options = {
-      title : { text : 'JS Metrics' },
-      series: [{
-        data: [29.9, 71.5, 106.4, 129.2],
-      }]
-    };
   }
 
   autoFitClicked() {
@@ -37,7 +24,8 @@ export class AppComponent {
 
   onOptionsChange(options: TemperatureOptions): void {
     console.log('emitovano options', options);
-    this._tempService.getSiteWeatherData().subscribe();
+    this._tempService.getSiteWeatherData(options)
+      .subscribe(data => this.chartData = data);
   }
 
 }
