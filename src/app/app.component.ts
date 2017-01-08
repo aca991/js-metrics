@@ -18,12 +18,12 @@ export class AppComponent {
   ) {
   }
 
-  autoFitClicked() {
-    console.log('emitovano autofit');
+  autoFitClicked(options: TemperatureOptions): void {
+     this._tempService.getSiteWeatherDataAutoFit(options)
+      .subscribe(data => this.chartData = data);
   }
 
   onOptionsChange(options: TemperatureOptions): void {
-    console.log('emitovano options', options);
     this._tempService.getSiteWeatherData(options)
       .subscribe(data => this.chartData = data);
   }
