@@ -19,7 +19,7 @@ export class AppComponent {
   }
 
   autoFitClicked(options: TemperatureOptions): void {
-     this._tempService.getSiteWeatherDataAutoFit(options)
+     this._tempService.getSiteWeatherDataAutoFit()
       .subscribe(data => this.chartData = data);
   }
 
